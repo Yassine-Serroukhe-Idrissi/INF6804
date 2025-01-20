@@ -1,0 +1,10 @@
+QUESTION 1 : 
+Les deux approche que ont a utiliser sont : 
+-HOG (Histogram of Oriented Gradients) c'est une méthode d'extraction des caractéristiques qui analyse les variations de luminosité dans une image en calculant des gradients d'intensité
+-CLIP c'est un modèle d'apprentissage profond qui associe des images et des textes en apprenant des représentations communes il permet la recherche d'image par description textuelle
+
+Question 2 :
+Si les objets dans l'image ont une taille uniforme la méthode la plus recommander et HOG car elle est efficace pour comparer les objets de tailles similaire car elle  analyse les contours et textures local de manière précise , mais si les objets dans l'image varie de taille on utilise CLIP car cette methode peut reconnaître des concepts plus abstraits et généraliser grace a sont apprentisage sur des données text-image
+
+Question 3 : 
+Pour HOG la performance devrait s'améliorer car la boîte englobante réduit le bruit car elle se concentrent uniquement sur l'objet d'intérêt , mais pour CLIP l'amélioration sera plus limitée car clip analyse l'image dans son ensemble, mais la boîte englobante peut tout de même aider à mieux cibler l’objet.

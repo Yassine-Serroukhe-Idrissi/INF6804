@@ -8,3 +8,32 @@ Si les objets dans l'image ont une taille uniforme la méthode la plus recommand
 
 Question 3 : 
 Pour HOG la performance devrait s'améliorer car la boîte englobante réduit le bruit car elle se concentrent uniquement sur l'objet d'intérêt , mais pour CLIP l'amélioration sera plus limitée car clip analyse l'image dans son ensemble, mais la boîte englobante peut tout de même aider à mieux cibler l’objet.
+
+Question 4 :
+Pour tester les hispotese que nous avons emise nous avons réaliser plusieurs expériences :
+- Tout d'abord nous avons constitue une base de données d'images ainsi qu'un ensemble d'images requetes pour differentes 
+catégories
+
+-pour chaqu'une de nos images requête, nous avons calcules la distance avec toutes les images de notre base de données.
+Pour CLIP, la distance est définie comme « similarité cosinus » entre les embeddings normalisés, tandis que pour HOG, 
+nous utilisons la norme euclidienne entre les vecteurs de caractéristiques.
+
+Nous avons évalué deux configurations :
+-Sans extraction de ROI : Comparaison sur l’image entière.
+-Avec extraction de ROI : Utilisation d’un recadrage automatique (basé sur les contours) afin de se concentrer sur l’objet d’intérêt.
+La difference de taille des objets et la variations de lumiere et des arrière plan detailler represente des defis 
+pendant l'analyse des images
+Pour chaque image requête, nous analyson les 5 meilleurs correspondances obtenues et calculons le nombre d'images dont 
+le nom contient le label recherché, puis nous affichons les resultas sous forme graphique (diagrammes en barres) 
+
+Question 5  : 
+-Implementation CLIP :
+    Pour clip nous avons utiliser la bibliotheque Hugging Face pour charger le model deja entrainé "openai/clip-vit-base-patch16"
+    puis nous avons extrait l'embeddings de clip à partir d’images, avec ou sans ROI, et on calcul la distance via la similarité cosinus
+    entre vecteurs normalise
+-Implementation HOG : 
+    Pour HOG nous avons utilise OpenCV pour le pré-traitement puis nous avons extrait  des caractéristiques avec cv2.HOGDescriptor en définissant des paramètres 
+    tels que win_size=(64,64), block_size=(16,16), block_stride=(8,8), cell_size=(8,8), et nbins=9.Puis nous avons calculer
+    la distance entre deux images à partir de la norme euclidienne entre leurs vecteurs HOG.
+    la plus part du code a été développée par nos soins, en s’appuyant sur la documentation d’OpenCV et Hugging Face. Nous avons notamment ajusté les seuils de détection
+    et la gestion des ROI pour optimiser la détection en fonction de nos images.

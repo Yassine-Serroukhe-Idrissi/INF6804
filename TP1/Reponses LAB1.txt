@@ -37,3 +37,5 @@ Question 5  :
     la distance entre deux images à partir de la norme euclidienne entre leurs vecteurs HOG.
     la plus part du code a été développée par nos soins, en s’appuyant sur la documentation d’OpenCV et Hugging Face. Nous avons notamment ajusté les seuils de détection
     et la gestion des ROI pour optimiser la détection en fonction de nos images.
+
+    
